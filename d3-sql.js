@@ -17,7 +17,7 @@ function parse(data, query) {
 
 d3.sql = function(url, query) {
     let config = {
-        locateFile: filename => `./${filename}`
+        locateFile: filename => `../${filename}`
     };
 
     return Promise.all([fetch(url).then(response => response.arrayBuffer()), initSqlJs(config)]).then(function([data, SQL]) {
