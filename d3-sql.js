@@ -1,5 +1,3 @@
-
-
 function parse(data, query) {
         var uInt8Array = new Uint8Array(data);
         var db = new SQL.Database(uInt8Array);
@@ -13,12 +11,13 @@ function parse(data, query) {
             });
             return newValue;
         })
+        newContents.columns = columns;
         return newContents;
 }
 
 d3.sql = function(url, query) {
     let config = {
-        locateFile: filename => `/dist/${filename}`
+        locateFile: filename => `/${filename}`
     };
 
     return Promise.all([fetch(url).then(response => response.arrayBuffer()), initSqlJs(config)]).then(function([data, SQL]) {

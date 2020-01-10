@@ -4,11 +4,46 @@
     <!-- <script data-main="scripts/main" src="scripts/require.js"></script> -->
     <!-- <script src="https://d3js.org/d3.v5.min.js"></script> -->
     <script src="https://d3js.org/d3.v5.js"></script>
-    <script src="../dist/sql-wasm.js"></script>
+    <script src="../sql-wasm.js"></script>
     <script src="../d3-sql.js"></script>
 </head>
 <body>
-    Example in JavaScript console
-    <script>d3.sql('Chinook_Sqlite.sqlite', "SELECT * from Album").then(data => console.log(data));</script>
+    <h1>Reading from a SQLite file in JavaScript</h1>
+    <p>
+        Using the Chinook database and displaying the output of the query:
+        <br>
+        <code>SELECT * from Album</code>
+        <br>
+        into an HTML table
+    </p>
+    <div id="table"></div>
+    <script>
+        d3.sql('Chinook_Sqlite.sqlite', "SELECT * from Album").then(function(data) {
+            var table = d3.select("#table").append("table");
+            var thead = table.append("thead");
+            var tbody = table.append("tbody");
+
+            thead.append("tr")
+                .selectAll("th").data(data.columns)
+                .enter()
+              .append("th")
+                .text(d => d);
+
+            var rows = tbody.selectAll("tr")
+                .data(data)
+                .enter()
+              .append('tr')
+
+            var cells = rows.selectAll("td")
+                .data(function(row) {
+                    return data.columns.map(function(column) {
+                        return { column: column, value: row[column] };
+                    });
+                })
+                .enter()
+              .append("td")
+                .text(d => d.value)
+        });
+    </script>
 </body>
 </html>
