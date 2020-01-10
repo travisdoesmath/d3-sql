@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- <script data-main="scripts/main" src="scripts/require.js"></script> -->
+    <!-- <script src="https://d3js.org/d3.v5.min.js"></script> -->
+    <script src="https://d3js.org/d3.v5.js"></script>
+    <script src="../dist/sql-wasm.js"></script>
+    <script src="../d3-sql.js"></script>
+</head>
+<body>
+    Example in JavaScript console
+    <script>d3.sql('Chinook_Sqlite.sqlite', "SELECT * from Album").then(data => console.log(data));</script>
+</body>
+</html>
