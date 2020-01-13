@@ -1,13 +1,15 @@
-# d3-sql
+# d3-foo
 
-A hacky attempt to make a d3-like function to query from sqlite files.
+YOUR DESCRIPTION HERE. Replace all instances of `foo` in this file with the name of your new plugin.
 
-To run a query on a sqlite file:
+## Installing
 
-```js
-d3.sql("/path/to/db.sqlite", query).then(function(data) {
-    console.log(data); // [{"Hello": "world"}, ...]
-});
-```
+If you use NPM, `npm install d3-foo`. Otherwise, download the [latest release](https://github.com/d3/d3-foo/releases/latest).
 
-*sql-wasm.js* and *sql-wasm.wasm* from [https://github.com/kripken/sql.js](https://github.com/kripken/sql.js), *Chinook_Sqlite.sqlite* from [https://github.com/lerocha/chinook-database/](https://github.com/lerocha/chinook-database/)
+## API Reference
+
+YOUR API DOCUMENTATION HERE. Use bold for symbols (such as constructor and method names) and italics for instances. See the other D3 modules for examples.
+
+<a href="#foo" name="foo">#</a> <b>foo</b>()
+
+Computes the answer to the ultimate question of life, the universe, and everything.

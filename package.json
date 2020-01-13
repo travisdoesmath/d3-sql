@@ -1,0 +1,32 @@
+{
+  "name": "d3-sql",
+  "version": "0.0.1",
+  "description": "D3 syntax wrapper around sql.js for reading SQLite files in browser",
+  "keywords": [
+    "d3",
+    "d3-module",
+    "sqlite"
+  ],
+  "author": {
+    "name": "Travis Taylor",
+    "url": "https://www.travisrtaylor.com"
+  },
+  "license": "BSD-3-Clause",
+  "main": "build/d3-sql.js",
+  "jsnext:main": "index",
+  "homepage": "https://github.com/travisdoesmath/d3-sql",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/travisdoesmath/d3-sql.git"
+  },
+  "scripts": {
+    "pretest": "rollup -c",
+    "test": "tape 'test/**/*-test.js' && eslint src",
+    "prepublishOnly": "rm -rf dist && yarn test",
+    "postpublish": "git push && git push --tags && cd ../d3.github.com && git pull && cp ../${npm_package_name}/dist/${npm_package_name}.js ${npm_package_name}.v${npm_package_version%%.*}.js && cp ../${npm_package_name}/dist/${npm_package_name}.min.js ${npm_package_name}.v${npm_package_version%%.*}.min.js && git add ${npm_package_name}.v${npm_package_version%%.*}.js ${npm_package_name}.v${npm_package_version%%.*}.min.js && git commit -m \"${npm_package_name} ${npm_package_version}\" && git push && cd - && zip -j dist/${npm_package_name}.zip -- LICENSE README.md dist/${npm_package_name}.js dist/${npm_package_name}.min.js"  },
+  "devDependencies": {
+    "rollup": "0.27",
+    "tape": "4",
+    "uglify-js": "2"
+  }
+}
